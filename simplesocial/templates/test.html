@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+  {% block content %}
+  <div class="container">
+    <br>
+    <h1>You are now logged in!</h1>
+    <hr>
+    <h2><a href="{% url 'groups:all'%}" style='color:#e0a910'>Go to Groups</a></h2>
+  </div>
+  {% endblock  %}

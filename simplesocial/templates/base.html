@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>GoodMood</title>
+    {# Bootstrap #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    {# Bootstrap icons #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    {# Fonts #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+    {# CSS #}
+    <link rel="stylesheet" href="{% static "simplesocial/css/master.css" %}">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg mynav" style="background-color: #adaba1"; role="navigation" id="navbar">
+      <div class="container">
+        <div class="navbar-nav align-items-center">
+          <a id='navbar' class="navbar-brand text-black-50 mynav" href="{% url 'home' %}">GOODMOOD</a>
+        </div>
+        <div class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+            <a class="nav-item nav-link text-black-50" href="{% url 'posts:create' %}">POST</a>
+            <a class="nav-item nav-link text-black-50" href="{% url 'groups:all' %}">GROUPS</a>
+            <a class="nav-item nav-link text-black-50" href="{% url 'groups:create' %}">CREATE GROUP</a>
+            <a class="nav-item nav-link text-black-50" href="{% url 'accounts:logout' %}">LOG OUT</a>
+          {% else %}
+            <a class="nav-item nav-link text-black-50" href="{% url 'groups:all' %}">GROUPS</a>
+            <a class="nav-item nav-link text-black-50" href="{% url 'accounts:login' %}">LOG IN</a>
+            <a class="nav-item nav-link text-black-50" href="{% url 'accounts:signup' %}">SIGN UP</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    <div class="container mycontent">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script src="{% static "simplesocial/js/master.js"%}" type="text/javascript" ></script>
+
+    <!-- Latest compiled and minified jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  </body>
+</html>
